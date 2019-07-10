@@ -2,7 +2,13 @@
   "name": "js-dev-env",
   "version": "1.0.0",
   "description": "JavaScript Development Environment (Pluralsight)",
-  "scripts": {},
+  "scripts": {
+    "localtunnel": "lt --port 3000 --subdomain lleseg",
+    "open:src": "node buildScripts/srcServer.js",
+    "prestart": "node buildScripts/startMessage.js",
+    "share": "npm-run-all --parallel open:src localtunnel",
+    "start": "npm-run-all --parallel open:src"
+  },
   "author": "Franco De Nardo",
   "license": "MIT",
   "dependencies": {
