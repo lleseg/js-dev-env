@@ -9,7 +9,9 @@
     "open:src": "babel-node buildScripts/srcServer.js",
     "prestart": "babel-node buildScripts/startMessage.js",
     "share": "npm-run-all --parallel open:src localtunnel",
-    "start": "npm-run-all --parallel open:src lint:watch"
+    "start": "npm-run-all --parallel open:src lint:watch test:watch",
+    "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Franco De Nardo",
   "license": "MIT",
