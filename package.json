@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "JavaScript Development Environment (Pluralsight)",
   "scripts": {
+    "lint": "esw webpack.config.* src buildScripts --color",
+    "lint:watch": "npm run lint -- --watch",
     "localtunnel": "lt --port 3000 --subdomain lleseg",
     "open:src": "babel-node buildScripts/srcServer.js",
     "prestart": "babel-node buildScripts/startMessage.js",
     "share": "npm-run-all --parallel open:src localtunnel",
-    "start": "npm-run-all --parallel open:src"
+    "start": "npm-run-all --parallel open:src lint:watch"
   },
   "author": "Franco De Nardo",
   "license": "MIT",
