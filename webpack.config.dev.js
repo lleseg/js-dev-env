@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+import HtmlWebackPlugin from 'html-webpack-plugin';
 
 export default {
   devtool: 'inline-source-map',
@@ -17,6 +18,10 @@ export default {
   plugins: [
     new webpack.LoaderOptionsPlugin({
       debug: true,
+    }),
+    new HtmlWebackPlugin({
+      template: 'src/index.html',
+      inject: true,
     }),
   ],
   module: {

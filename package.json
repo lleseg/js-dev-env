@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "JavaScript Development Environment (Pluralsight)",
   "scripts": {
+    "clean-dist": "rimraf ./dist && mkdir dist",
+    "build": "babel-node buildScripts/build.js",
     "generate-mock-data": "babel-node buildScripts/generateMockData",
     "lint": "esw webpack.config.* src buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
     "localtunnel": "lt --port 3000 --subdomain lleseg",
     "open:src": "babel-node buildScripts/srcServer.js",
+    "postbuild": "babel-node buildScripts/distServer.js",
+    "prebuild": "npm-run-all clean-dist test lint",
     "prestart": "babel-node buildScripts/startMessage.js",
     "prestart-mockapi": "npm run generate-mock-data",
     "share": "npm-run-all --parallel open:src localtunnel",
@@ -44,6 +48,7 @@
     "json-schema-faker": "^0.5.0-rc16",
     "json-server": "^0.15.0",
     "localtunnel": "^1.9.2",
+    "mini-css-extract-plugin": "^0.7.0",
     "mocha": "^6.1.4",
     "nock": "^10.0.6",
     "npm-run-all": "3.1.1",
@@ -55,6 +60,6 @@
     "webpack": "^4.35.3",
     "webpack-dev-middleware": "1.8.4",
     "webpack-hot-middleware": "2.13.0",
-    "webpack-md5-hash": "0.0.5"
+    "webpack-md5-hash": "0.0.6"
   }
 }

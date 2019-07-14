@@ -1,6 +1,22 @@
+<!-- Esto es una plantilla para index.html
+Usa ejs y htmlWebpackPlugin para generar un index.html diferente para cada ambiente.
+htmlWebpackPlugin agregará dinámicamente las referencias a los scripts y a los estilos que empaqueta
+a este archivo. El paquete generado estará basado en archivos basados en hashes así que
+es necesario referenciarlos dinámicamente. -->
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <% if (htmlWebpackPlugin.options.trackJSToken) { %>
+    <!-- Empieza TrackJS -->
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
+      window.TrackJS &&
+        TrackJS.install({
+          token: '<%=htmlWebpackPlugin.options.trackJSToken%>',
+        });
+    </script>
+    <!-- Termina TrackJS -->
+    <% } %>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -18,7 +34,5 @@
       </thead>
       <tbody id="users"></tbody>
     </table>
-
-    <script src="bundle.js"></script>
   </body>
 </html>
