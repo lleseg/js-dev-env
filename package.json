@@ -5,6 +5,7 @@
   "scripts": {
     "clean-dist": "rimraf ./dist && mkdir dist",
     "build": "babel-node buildScripts/build.js",
+    "deploy": "surge ./dist",
     "generate-mock-data": "babel-node buildScripts/generateMockData",
     "lint": "esw webpack.config.* src buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
